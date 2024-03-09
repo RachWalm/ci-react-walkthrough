@@ -8,10 +8,11 @@ import SignInForm from './pages/auth/SignInForm';
 import PostCreateForm from './pages/posts/PostCreateForm';
 import PostPage from './pages/posts/PostPage';
 import PostsPage from './pages/posts/PostsPage';
-import { UseCurrentUser } from './contexts/CurrentUserContext';
+import { useCurrentUser } from './contexts/CurrentUserContext';
+import PostEditForm from './pages/posts/PostEditForm';
 
 function App() {
-  const currentUser = UseCurrentUser();
+  const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || ""
   return (
         <div className={styles.App}>
@@ -36,6 +37,7 @@ function App() {
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/posts/create" render={() => <PostCreateForm />} />
               <Route exact path="/posts/:id" render={() => <PostPage />} />
+              <Route exact path="posts/:id/edit" render={() => <PostEditForm />} />
               <Route render={() =><p>Page not found!!!</p> } />
             </Switch>
           </Container>
