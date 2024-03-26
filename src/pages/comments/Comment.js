@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Media } from 'react-bootstrap';
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Avatar from '../../components/Avatar';
 import styles from '../../styles/Comment.module.css';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { axiosRes } from '../../api/axiosDefaults';
 import CommentEditForm from "./CommentEditForm";
-const [showEditForm, setShowEditForm] = useState(false);
+
 
 
 const Comment = (props) => {
@@ -22,9 +22,10 @@ const Comment = (props) => {
         setComments,
     } = props;
 
+    const [showEditForm, setShowEditForm] = useState(false);
+
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
-    const history = useHistory();
 
     const handleDelete = async () => {
         try{
